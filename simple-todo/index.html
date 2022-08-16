@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="scss/style.css" />
+  </head>
+  <body>
+    <section class="todo">
+      <div class="container-fluid">
+        <h3 class="page_title">Task Progress List</h3>
+
+        <div class="task_wrapper">
+          <div class="row">
+            <!-- Task List -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="task_category">
+                <h5 class="category_title">Task</h5>
+                <!-- <div class="dropdown task_dd">
+                  <button
+                    class="task_action btn_text_theme"
+                    type="button"
+                    id="taskDD"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-ellipsis-v"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="taskDD">
+                    <a class="dropdown-item" href="Javascript: void(0)">Multiple Delete</a>
+                    <a class="dropdown-item" href="Javascript: void(0)" onclick="deleteShowClick()"
+                      >Delete</a
+                    >
+                    <a class="dropdown-item" href="Javascript: void(0)">Edit</a>
+                  </div>
+                </div> -->
+                <button
+                  class="btn_add btn_text_theme"
+                  onclick="showAddSidebar()"
+                >
+                  <i class="fa fa-plus-circle"></i>
+                </button>
+              </div>
+
+              <div class="task_box_wrapper" id="main_task_list"></div>
+            </div>
+
+            <!-- In-Progress List -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="task_category">
+                <h5 class="category_title">In Progress</h5>
+                <button
+                  class="btn_add btn_text_theme hide"
+                  id="btn_prog_Status"
+                >
+                  <i class="fa fa-refresh"></i>
+                </button>
+              </div>
+              <div
+                class="task_box_wrapper"
+                id="div1"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              ></div>
+            </div>
+            <!-- For-Testing List -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="task_category">
+                <h5 class="category_title">Review</h5>
+                <button class="btn_add btn_text_theme hide">
+                  <i class="fa fa-refresh"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Done List -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="task_category">
+                <h5 class="category_title">Done</h5>
+                <button class="btn_add btn_text_theme hide">
+                  <i class="fa fa-refresh"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="todo_sidebar" id="addtodoSidebar">
+      <h4 class="sidebar_heading">Add Todo Item</h4>
+      <button type="button" class="btn_close_sidebar" onclick="hideSidebar()">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <form onsubmit="return false">
+        <div class="form-group">
+          <label>Task ID</label>
+          <input
+            type="text"
+            class="form-control"
+            required="True"
+            style="height: 40px"
+            id="taskidInput"
+          />
+          <span id="error_taskId" class="error"></span>
+        </div>
+        <div class="form-group">
+          <label>Add Title Name</label>
+          <input
+            type="text"
+            class="form-control"
+            style="height: 40px"
+            id="titleInput"
+          />
+          <span id="error_titlename" class="error"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Add Description</label>
+          <textarea
+            class="form-control"
+            style="height: 100px"
+            id="discriptionInput"
+          ></textarea>
+          <span id="error_discription" class="error"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Set Priority</label>
+          <input
+            type="text"
+            class="form-control"
+            style="height: 40px"
+            id="priorityInput"
+          />
+          <span id="error_priority" class="error"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Set Time Limit</label>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 pr-2">
+              <input
+                type="number"
+                class="form-control"
+                min="1"
+                max="12"
+                placeholder="Hour"
+                style="height: 40px"
+                id="hoursInput"
+              />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 pr-2 pl-2">
+              <input
+                type="number"
+                class="form-control"
+                min="0"
+                max="59"
+                placeholder="Minute"
+                style="height: 40px"
+                id="minutesInput"
+              />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 pl-2">
+              <input
+                type="number"
+                class="form-control"
+                min="0"
+                max="59"
+                placeholder="Seconds"
+                style="height: 40px"
+                id="secondsInput"
+              />
+            </div>
+          </div>
+          <span id="error_hours" class="error"></span>
+          <span id="error_minutes" class="error"></span>
+          <span id="error_seconds" class="error"></span>
+
+          <!-- global errors -->
+          <span id="error_time" class="error"></span>
+          <span id="error_all" class="error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg mt-4 addTask_btn" onclick="addTask()">
+          Submit
+        </button>
+
+        <button type="submit" class="btn btn-primary btn-lg mt-4 updateTask_btn" onclick="updateButton()">
+          Update
+        </button>
+      </form>
+    </aside>
+
+    <div id="overlay" onclick="overlaySidebarClick()"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/drag.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/backend.js"></script>
+  </body>
+</html>

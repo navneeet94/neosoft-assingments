@@ -1,0 +1,16 @@
+button , a{
+    outline: none !important;
+}
+
+.btn_theme{
+    &:hover{
+        background-color: $theme !important;
+        color: #fff;
+    }
+}
+
+.btn_text_theme{
+    &:hover{
+        color: $theme;
+    }
+}

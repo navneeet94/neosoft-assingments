@@ -1,0 +1,18 @@
+{
+  "student": [
+    {
+      "name": "Navneet Taneja",
+      "stuClass": "12th",
+      "rollno": 1,
+      "subject": "Maths, Science, Social Science, English, Hindi, Computer Science, Arts & Crafts",
+      "id": 1
+    },
+    {
+      "name": "Krishna Kumar",
+      "stuClass": "12th",
+      "rollno": 1234,
+      "subject": "HTML",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+html{
+    font-size: 10px;
+}
+html , body{
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+body{
+    font-family: $base-font;
+    font-size: 1.6rem;
+    padding-top: 5.3rem;
+}
